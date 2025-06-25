@@ -29,10 +29,10 @@ export async function POST(request: NextRequest)
 
         const chatCompletion: OpenAI.Chat.ChatCompletion = await openai.chat.completions.create(params);
 
-        return NextResponse.json({ generatedQuote: chatCompletion.choices[0].message.content, status: 200 });
+        return NextResponse.json({ generatedQuote: chatCompletion.choices[0].message.content }, { status: 200 });
     } catch (error) {
         console.error('Error generating quote:', error);
 
-        return NextResponse.json({ error: 'Internal Server Error', status: 500 });
+        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 };
